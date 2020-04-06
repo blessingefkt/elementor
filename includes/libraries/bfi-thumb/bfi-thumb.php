@@ -488,8 +488,10 @@ if ( ! class_exists( 'BFI_Thumb_1_3' ) ) {
 			if ( isset( $width ) && $crop_only === false ) {
 				//get image size after cropping
 				$dims = image_resize_dimensions( $orig_w, $orig_h, $width, isset( $height ) ? $height : null, isset( $crop ) ? $crop : false );
-				$dst_w = $dims[4];
-				$dst_h = $dims[5];
+				if ($dims) {
+					$dst_w = $dims[4];
+					$dst_h = $dims[5];
+				}
 			} else if ( $crop_only === true ) {
 				// we don't want a resize,
 				// but only a crop in the image
